@@ -16,6 +16,7 @@ mainClassName = 'springcore.tickets.App'
 dependencies {
     compile 'com.google.guava:guava:25.1-jre'
     compile 'org.springframework:spring-context:5.0.7.RELEASE'
+    compile 'com.beust:jcommander:1.71'
 
     annotationProcessor 'org.projectlombok:lombok:1.18.0'
     compileOnly 'org.projectlombok:lombok:1.18.0'
@@ -29,4 +30,8 @@ repositories {
 
 wrapper {
     gradleVersion = '4.8.1'
+}
+
+run {
+    standardInput = System.in
 }

@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import springcore.tickets.daos.TicketDao;
 import springcore.tickets.daos.TicketMemoryDao;
 import springcore.tickets.services.DefaultTicketsService;
+import springcore.tickets.services.IdGenerator;
+import springcore.tickets.services.LongIdGenerator;
 import springcore.tickets.services.TicketsService;
 
 @Configuration
@@ -18,5 +20,10 @@ public class AppConfig {
   @Bean
   public TicketsService ticketsService(TicketDao ticketDao) {
     return new DefaultTicketsService(ticketDao);
+  }
+
+  @Bean
+  public IdGenerator idGenerator() {
+    return new LongIdGenerator();
   }
 }

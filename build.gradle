@@ -1,0 +1,28 @@
+plugins {
+    // Apply the java plugin to add support for Java
+    id 'java'
+
+    // Apply the application plugin to add support for building an application
+    id 'application'
+}
+
+group = 'com.alexmera'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.9
+
+// Define the main class for the application
+mainClassName = 'springcore.tickets.App'
+
+dependencies {
+    compile 'com.google.guava:guava:25.1-jre'
+
+    testCompile 'junit:junit:4.12'
+}
+
+repositories {
+    jcenter()
+}
+
+wrapper {
+    gradleVersion = '4.8.1'
+}

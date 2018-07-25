@@ -16,6 +16,9 @@ mainClassName = 'springcore.tickets.App'
 dependencies {
     compile 'com.google.guava:guava:25.1-jre'
 
+    annotationProcessor 'org.projectlombok:lombok:1.18.0'
+    compileOnly 'org.projectlombok:lombok:1.18.0'
+
     testCompile 'junit:junit:4.12'
 }
 

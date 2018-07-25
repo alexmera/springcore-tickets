@@ -1,13 +1,12 @@
 package springcore.tickets;
 
 import java.time.LocalDateTime;
-import springcore.tickets.daos.TicketDao;
-import springcore.tickets.daos.TicketMemoryDao;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import springcore.config.AppConfig;
 import springcore.tickets.model.Resolution;
 import springcore.tickets.model.Ticket;
 import springcore.tickets.model.TicketStatus;
 import springcore.tickets.model.data.TicketData;
-import springcore.tickets.services.DefaultTicketsService;
 import springcore.tickets.services.TicketsService;
 
 public class App {
@@ -35,8 +34,11 @@ public class App {
   public static void main(String[] args) {
     System.out.println(new App().getGreeting());
 
-    TicketDao dao = new TicketMemoryDao();
-    TicketsService service = new DefaultTicketsService(dao);
+    AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(
+        AppConfig.class
+    );
+
+    TicketsService service = applicationContext.getBean(TicketsService.class);
 
     service.report(ticket_1);
     service.report(ticket_2);

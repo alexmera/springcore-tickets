@@ -26,4 +26,14 @@ public class TicketData implements Ticket {
   private LocalDateTime creationDate;
 
   private LocalDateTime closingDate;
+
+  public TicketData(Ticket other) {
+    this.id = other.getId();
+    this.subject = other.getSubject();
+    this.status = other.getStatus();
+    this.resolution = other.getResolution();
+    this.resolutionInfo = other.getResolutionInfo();
+    this.creationDate = other.getCreationDate();
+    this.closingDate = other.getClosingDate();
+  }
 }

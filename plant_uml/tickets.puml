@@ -1,0 +1,52 @@
+@startuml
+left to right direction
+skinparam monochrome true
+skinparam defaultFontName "Courier"
+skinparam defaultFontSize 14
+'skinparam defaultFontStyle bold
+
+interface Ticket {
+  Long            getId();
+  String          getSubject();
+  TicketStatus    getStatus();
+  Resolution      getResolution();
+  String          getResolutionInfo();
+  LocalDateTime   getCreationDate();
+  LocalDateTime   getClosingDate();
+}
+
+enum TicketStatus {
+  OPEN,
+  CLOSED
+}
+
+enum Resolution {
+  SOLVED,
+  NOT_SOLVED
+}
+
+interface TicketDao {
+  Ticket            create(Ticket ticket);
+  Ticket            getOne(long id);
+  Optional<Ticket>  findOne(long id);
+  List<Ticket>      find(Predicate<Ticket> predicate);
+  List<Ticket>      find();
+  Ticket            update(Ticket ticket);
+  Ticket            delete(long id);
+}
+
+interface TicketsService {
+  Ticket            report(Ticket ticket);
+  Ticket            get(long ticketId);
+  Optional<Ticket>  findOne(long ticketId);
+  List<Ticket>      all();
+  Ticket            modify(Ticket ticket);
+  Ticket            close(long ticketId, Resolution resolution);
+  Ticket            close(long ticketId, Resolution resolution, String resolutionInfo);
+  List<Ticket>      find(Predicate<Ticket> predicate);
+}
+
+Ticket o-- TicketStatus
+Ticket o-- Resolution
+
+@enduml
